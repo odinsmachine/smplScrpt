@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if find WiFi\ Scans > /dev/null
+	then
+		cd ~/WiFi\ Scans;
+		/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport scan > "smplTemp.txt";
+		mv -f ~/Wifi\ Scans/smplTemp.txt Scan$(date +%d%m%y-%H%M%S).txt;
+		echo "Scan Complete" $(date +%d%m%y-%H%M%S);
+else
+		mkdir "WiFi Scans";
+		cd ~/WiFi\ Scans;
+		/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport scan > "smplTemp.txt";
+		mv -f ~/Wifi\ Scans/smplTemp.txt Scan$(date +%d%m%y-%H%M%S).txt;
+		echo "OTHER Scan Complete" $(date +%d%m%y-%H%M%S);
+fi
